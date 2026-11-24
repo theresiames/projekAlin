@@ -1,46 +1,45 @@
+
 # Game Puzzle OBE
 
 ## 1. Deskripsi Proyek
 
-**Game Puzzle OBE** merupakan sebuah permainan edukasi berbasis web yang dirancang untuk membantu pengguna memahami dan mempraktikkan konsep Operasi Baris Elementer (OBE) dalam mata kuliah Aljabar Linear Elementer.
+**Game Puzzle OBE** merupakan permainan edukasi berbasis web yang dirancang untuk membantu pengguna memahami dan mempraktikkan konsep Operasi Baris Elementer (OBE) dalam mata kuliah Aljabar Linear Elementer.
 
 Dalam permainan ini, pemain diberikan sebuah matriks augmented yang harus diubah menjadi bentuk **Reduced Row Echelon Form (RREF)** dengan menggunakan tiga jenis Operasi Baris Elementer.
 
-Berbeda dengan aplikasi kalkulator matriks pada umumnya, pemain harus menentukan sendiri operasi yang akan dilakukan pada setiap langkah. Aplikasi hanya menyediakan bantuan berupa petunjuk (Hint) apabila pemain mengalami kesulitan.
-
-Permainan ini dikembangkan dengan tujuan menggabungkan proses pembelajaran Aljabar Linear dengan konsep permainan puzzle yang interaktif.
+Pemain harus menentukan sendiri operasi yang akan dilakukan pada setiap langkah. Aplikasi menyediakan fitur bantuan berupa Hint apabila pemain mengalami kesulitan.
 
 ## 2. Tujuan Proyek
 
 Tujuan pengembangan Game Puzzle OBE adalah:
 
 1. Membantu pengguna memahami konsep Operasi Baris Elementer.
-2. Melatih kemampuan pengguna dalam melakukan operasi pada matriks augmented.
+2. Melatih kemampuan dalam melakukan operasi pada matriks augmented.
 3. Memahami proses penyelesaian Sistem Persamaan Linear (SPL) menggunakan metode Gauss-Jordan.
 4. Mengenalkan bentuk REF dan RREF beserta perbedaannya.
 5. Meningkatkan kemampuan berpikir logis dan ketelitian dalam menyelesaikan persoalan matriks melalui permainan.
 
 ## 3. Konsep Permainan
 
-Pemain akan diberikan matriks augmented secara acak pada setiap level. Tugas pemain adalah mengubah matriks tersebut menjadi bentuk RREF dengan menggunakan operasi baris yang tersedia.
+Pemain akan diberikan matriks augmented pada setiap level. Tugas pemain adalah mengubah matriks tersebut menjadi bentuk RREF dengan menggunakan operasi baris yang tersedia.
 
-Pemain bebas menentukan urutan operasi yang digunakan selama operasi tersebut merupakan OBE yang benar.
+Pemain bebas menentukan urutan operasi selama operasi tersebut sesuai dengan aturan OBE.
 
 ### Tampilan Permainan
 
 Permainan memiliki beberapa komponen utama:
 
-- **Matriks:** Menampilkan matriks augmented yang sedang dikerjakan pemain.
+- **Matriks:** Menampilkan matriks augmented yang sedang dikerjakan.
 - **Panel Aksi:** Menyediakan tiga jenis operasi baris elementer.
-- **Riwayat Langkah:** Menampilkan daftar operasi yang telah dilakukan pemain.
-- **Undo:** Mengembalikan matriks ke kondisi sebelum operasi terakhir.
+- **Riwayat Langkah:** Menampilkan daftar operasi yang telah dilakukan.
+- **Undo:** Membatalkan operasi terakhir.
 - **Hint:** Memberikan petunjuk mengenai operasi yang dapat dilakukan berikutnya.
 - **Informasi Permainan:** Menampilkan level, jumlah langkah, langkah minimum acuan, dan skor.
 - **Pesan Kemenangan:** Muncul ketika matriks berhasil mencapai bentuk RREF.
 
 ## 4. Fitur Utama
 
-### 4.1. Tiga Operasi Baris Elementer
+### 4.1. Operasi Baris Elementer
 
 Pemain dapat menggunakan tiga jenis operasi berikut:
 
@@ -48,50 +47,40 @@ Pemain dapat menggunakan tiga jenis operasi berikut:
 
 Menukar posisi dua baris dalam matriks.
 
-\[
-R_i \leftrightarrow R_j
-\]
+Rᵢ ↔ Rⱼ
 
 **2. Perkalian Baris (Scale)**
 
 Mengalikan suatu baris dengan konstanta bukan nol.
 
-\[
-R_i \leftarrow kR_i,\quad k\neq 0
-\]
+Rᵢ ← kRᵢ, dengan k ≠ 0
 
 **3. Penjumlahan Baris (Add Row)**
 
 Menambahkan suatu baris dengan kelipatan baris lainnya.
 
-\[
-R_i \leftarrow R_i+kR_j
-\]
-
-Ketiga operasi tersebut dapat digunakan secara berurutan untuk mengubah matriks hingga mencapai bentuk RREF.
+Rᵢ ← Rᵢ + kRⱼ
 
 ### 4.2. Pengecekan RREF
 
-Aplikasi memiliki sistem pengecekan otomatis untuk menentukan apakah matriks yang dikerjakan pemain sudah memenuhi syarat RREF.
+Aplikasi memiliki sistem pengecekan otomatis untuk menentukan apakah matriks sudah memenuhi syarat RREF, yaitu:
 
-Kriteria pengecekan meliputi:
-
-1. Setiap elemen utama (pivot) bernilai 1.
+1. Setiap pivot bernilai 1.
 2. Setiap kolom pivot memiliki elemen selain pivot bernilai 0.
 3. Posisi pivot pada baris berikutnya berada lebih ke kanan.
 4. Semua baris nol berada di bagian paling bawah.
 
 ### 4.3. Hint (Petunjuk)
 
-Fitur Hint memberikan saran operasi yang dapat dilakukan pemain untuk mendekatkan matriks ke bentuk RREF.
+Fitur Hint memberikan saran operasi yang dapat dilakukan pemain untuk mengubah matriks menuju bentuk RREF.
 
-Petunjuk diberikan melalui proses Gauss-Jordan yang berjalan di belakang layar. Pemain tetap harus memilih dan melakukan operasi sendiri.
+Petunjuk menggunakan proses Gauss-Jordan yang berjalan di belakang layar. Pemain tetap harus memilih dan melakukan operasi sendiri.
 
 ### 4.4. Riwayat dan Undo
 
 - Riwayat mencatat setiap operasi yang dilakukan pemain.
 - Tombol Undo memungkinkan pemain membatalkan operasi terakhir.
-- Matriks dapat dikembalikan ke kondisi sebelumnya tanpa harus mengulang permainan dari awal.
+- Matriks dapat dikembalikan ke kondisi sebelumnya tanpa mengulang permainan dari awal.
 
 ### 4.5. Sistem Skor dan Bintang
 
@@ -99,9 +88,9 @@ Pemain mendapatkan skor berdasarkan jumlah langkah yang digunakan untuk menyeles
 
 Penilaian menggunakan tiga kategori bintang:
 
-- **3 Bintang:** Jumlah langkah pemain maksimal satu langkah di atas langkah minimum acuan.
-- **2 Bintang:** Jumlah langkah pemain lebih banyak dari kategori tiga bintang, tetapi masih mendekati langkah minimum.
-- **1 Bintang:** Matriks berhasil diselesaikan, tetapi menggunakan lebih banyak langkah.
+- **3 Bintang:** Jumlah langkah maksimal satu langkah di atas langkah minimum acuan.
+- **2 Bintang:** Jumlah langkah lebih banyak dari kategori tiga bintang, tetapi masih mendekati langkah minimum.
+- **1 Bintang:** Matriks berhasil diselesaikan dengan jumlah langkah yang lebih banyak.
 
 ## 5. Level Permainan
 
@@ -123,9 +112,7 @@ Proyek ini menerapkan beberapa konsep utama dalam Aljabar Linear Elementer.
 
 ### 6.1. Matriks Augmented
 
-Matriks augmented merupakan gabungan antara matriks koefisien dan matriks konstanta dari suatu Sistem Persamaan Linear.
-
-Matriks ini digunakan sebagai objek utama yang harus diselesaikan pemain.
+Matriks augmented merupakan gabungan antara matriks koefisien dan matriks konstanta dari suatu Sistem Persamaan Linear. Matriks ini menjadi objek utama yang harus diselesaikan pemain.
 
 ### 6.2. Operasi Baris Elementer
 
@@ -133,15 +120,11 @@ OBE digunakan untuk melakukan transformasi terhadap baris-baris matriks tanpa me
 
 ### 6.3. Metode Gauss-Jordan
 
-Metode Gauss-Jordan merupakan metode penyelesaian SPL dengan melakukan operasi baris hingga matriks mencapai bentuk RREF.
-
-Metode ini juga digunakan sebagai dasar pembuatan fitur Hint.
+Metode Gauss-Jordan merupakan metode penyelesaian SPL dengan melakukan operasi baris hingga matriks mencapai bentuk RREF. Metode ini juga digunakan sebagai dasar pembuatan fitur Hint.
 
 ### 6.4. Reduced Row Echelon Form (RREF)
 
-RREF merupakan bentuk matriks yang memenuhi seluruh kriteria eselon baris tereduksi.
-
-Pencapaian bentuk RREF menjadi kondisi utama untuk menyelesaikan setiap level.
+RREF merupakan bentuk matriks yang memenuhi seluruh kriteria eselon baris tereduksi. Pencapaian bentuk RREF menjadi kondisi utama untuk menyelesaikan setiap level.
 
 ### 6.5. Rank Matriks
 
@@ -155,7 +138,7 @@ Klasifikasi solusi:
 
 ## 7. Sistem di Balik Permainan
 
-Aplikasi menggunakan beberapa proses utama untuk mendukung jalannya permainan.
+Aplikasi menggunakan beberapa proses utama untuk mendukung jalannya permainan:
 
 1. **Fungsi OBE:** Menjalankan operasi pertukaran, perkalian, dan penjumlahan baris.
 2. **Pengecek RREF:** Memeriksa apakah matriks sudah memenuhi kriteria RREF.
@@ -166,7 +149,7 @@ Aplikasi menggunakan beberapa proses utama untuk mendukung jalannya permainan.
 
 ## 8. Teknologi yang Digunakan
 
-Teknologi yang direncanakan dalam pengembangan proyek:
+Teknologi yang digunakan dalam pengembangan proyek:
 
 - **HTML:** Membuat struktur halaman web.
 - **CSS:** Mengatur tampilan dan desain antarmuka permainan.
